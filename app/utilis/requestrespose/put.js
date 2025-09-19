@@ -1,22 +1,23 @@
-const MakePut = async (endpoint, data) => {
+const MakePut = async (endpoint, data, token) => {
+
+    console.log(data);
+
     try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/${endpoint}`, {
             method: "PUT",
             headers: {
-                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`,
             },
-            body: JSON.stringify(data),
+            body: data,
         });
 
-        // Check if the response is successful
         if (!response.ok) {
             console.error(`PUT request failed with status: ${response.status}`);
             return false;
         }
 
         const res = await response.json();
-        return res; // Return the actual response data
-
+        return res;
     } catch (error) {
         console.error("PUT request error:", error);
         return false;

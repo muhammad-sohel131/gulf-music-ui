@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 async function verifyJWT(token) {
     try {
-        const secret = new TextEncoder().encode(process.env.JWT_SECRET);
+        const secret = new TextEncoder().encode(process.env.NEXT_PUBLIC_JWT_SECRET);
         const { payload } = await jwtVerify(token, secret);
         return payload;
     } catch (err) {
@@ -12,16 +12,21 @@ async function verifyJWT(token) {
     }
 }
 
+
+
 export default async function middleware(req) {
-    const path = req.nextUrl.pathname; // FIXED
+
+    const path = req.nextUrl.pathname;
     const token = req.cookies.get("token")?.value;
     const role = req.cookies.get("role")?.value;
+
 
     // Check token validity
     const decoded = token ? await verifyJWT(token) : null;
 
+
     // Protected routes
-    const protectedRoutes = ["/deshboards"];
+    const protectedRoutes = ["/deshboard"];
     const isProtected = protectedRoutes.some(route => path.startsWith(route));
 
     // If not logged in but trying to access protected routes

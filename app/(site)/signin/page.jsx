@@ -1,37 +1,71 @@
 'use client'
 
 import Loading from "@/app/componnent/Loading";
+import setCookie from "@/app/utilis/helper/cookie/setcookie";
 import MakePost from "@/app/utilis/requestrespose/post";
 import useLoadingStore from "@/store/useLoadingStore";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+
+import { toast, ToastContainer } from "react-toastify";
 
 const { useState } = require("react");
 
 const Signin = () => {
 
+    const router = useRouter();
     const { isLoading, setLoading } = useLoadingStore();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [res, setres] = useState(false);
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        console.log({ email, password, });
-
         if (email && password) {
             setLoading(true);
             const response = await MakePost("api/login", { email, password });
-            setLoading(false);
+
             console.log(response);
+
+
+            setLoading(false);
             if (response) {
-                setres(response);
+                setCookie("token", response?.data?.token, 1);
+                setCookie("id", response?.data?.user?.id, 1)
+                setCookie("name", response?.data?.user?.name, 1);
+                setCookie("role", response?.data?.user?.role, 1);
+                toast.success(response?.message);
+
+
+                switch (response?.data?.user?.role?.trim()) {
+                    case "Admin":
+                        router.push('/deshboard/admin');
+                        break;
+                    case "Artist":
+                        router.push('/deshboard/artists');
+                        break;
+                    case "Venue":
+                        router.push('/deshboard/venue');
+                        break;
+                    case "Journalist":
+                        router.push('/deshboard/journalist');
+                        break;
+                    case "Fan":
+                        router.push('/deshboard/fan');
+                        break;
+                    default:
+                        break;
+                }
+
+
+
+
             } else {
-                alert("There was a Server side Problem");
+                toast.error(response?.message);
             }
         } else {
-            alert("Required All Feilds");
+            toast.warn("Required All Feilds");
         }
 
     };
@@ -76,6 +110,7 @@ const Signin = () => {
                     sign Up
                 </Link></span>
             </div>
+            <ToastContainer />
         </div>
     );
 };

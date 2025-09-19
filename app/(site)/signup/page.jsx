@@ -4,12 +4,14 @@ import Loading from "@/app/componnent/Loading";
 import MakePost from "@/app/utilis/requestrespose/post";
 import useLoadingStore from "@/store/useLoadingStore";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 
 const SignUP = () => {
 
 
+    const router = useRouter();
     const { isLoading, setLoading } = useLoadingStore();
     const [name, setName] = useState('');
     const [email, setEmail] = useState("");
@@ -29,6 +31,7 @@ const SignUP = () => {
             setLoading(false);
             if (response) {
                 setres(response);
+                router.push('/accountactive');
             } else {
                 alert("There was a Server side Problem");
             }

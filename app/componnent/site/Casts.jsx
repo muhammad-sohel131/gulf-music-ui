@@ -10,7 +10,7 @@ const CastsSection = () => {
     };
 
     return (
-        <section className="bg-yellow-50">
+        <section className="bg-gray-50">
             <div className="w-full max-w-6xl mx-auto py-12 px-4 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
                 {/* Left Side: Static Description */}
                 <div>

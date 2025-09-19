@@ -17,7 +17,6 @@ export default function Header() {
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
-
       setscrollHeight(window.scrollY);
     })
 
