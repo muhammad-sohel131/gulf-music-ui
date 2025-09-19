@@ -1,22 +1,44 @@
 'use client'
 
+import Loading from "@/app/componnent/Loading";
+import MakePost from "@/app/utilis/requestrespose/post";
+import useLoadingStore from "@/store/useLoadingStore";
 import Link from "next/link";
 
 const { useState } = require("react");
 
 const Signin = () => {
+
+    const { isLoading, setLoading } = useLoadingStore();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [role, setrole] = useState('Artist');
+    const [res, setres] = useState(false);
 
-    const handleSubmit = (e) => {
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Handle login logic here
-        console.log("Email:", email, "Password:", password);
+
+        console.log({ email, password, });
+
+        if (email && password) {
+            setLoading(true);
+            const response = await MakePost("api/login", { email, password });
+            setLoading(false);
+            console.log(response);
+            if (response) {
+                setres(response);
+            } else {
+                alert("There was a Server side Problem");
+            }
+        } else {
+            alert("Required All Feilds");
+        }
+
     };
 
     return (
         <div className="w-screen pb-[95px] pt-[200px] flex justify-center items-center bg-gray-100">
+            {isLoading && <Loading />}
             <div className="bg-white p-6 rounded-lg shadow-md w-80 text-center">
                 <h2 className="text-xl font-bold mb-4">Sign IN</h2>
 
@@ -37,17 +59,6 @@ const Signin = () => {
                         className="w-full px-3 py-2 border border-gray-300 rounded-md outline-none "
                     />
 
-
-                    <select
-                        placeholder="Select Option"
-                        onChange={(e) => setrole(e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md outline-none"
-                    >
-                        <option value="Artist">Artist</option>
-                        <option value="Venue">Venue</option>
-                        <option value="Journalist">Journalist</option>
-                        <option value="Fan">Fan</option>
-                    </select>
 
                     <button
                         type="submit"

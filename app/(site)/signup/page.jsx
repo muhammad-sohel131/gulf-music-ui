@@ -2,44 +2,48 @@
 
 import Loading from "@/app/componnent/Loading";
 import MakePost from "@/app/utilis/requestrespose/post";
+import useLoadingStore from "@/store/useLoadingStore";
 import Link from "next/link";
 import { useState } from "react";
 
 
 const SignUP = () => {
+
+
+    const { isLoading, setLoading } = useLoadingStore();
     const [name, setName] = useState('');
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [role, setrole] = useState('Artist');
     const [res, setres] = useState(false);
-    const [isloading, setisloading] = useState(false);
+
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // Handle login logic here
 
-        setisloading(true);
 
-        const formdata = {
-            name: name,
-            email: email,
-            role: role,
-            password: password
+        if (name && email && password && role) {
+            setLoading(true);
+            const response = await MakePost("api/register", { name, email, password, role });
+            setLoading(false);
+            if (response) {
+                setres(response);
+            } else {
+                alert("There was a Server side Problem");
+            }
+        } else {
+            alert("Required All Feilds");
         }
 
-        const response = await MakePost("api/register", formdata);
-        setres(response);
-        setisloading(false);
     };
 
 
-    console.log(res);
 
 
     return (
         <div className="w-screen pb-[95px] pt-[200px] flex justify-center items-center bg-gray-100">
-            {isloading && <Loading />}
+            {isLoading && <Loading />}
             <div className="bg-white p-6 rounded-lg shadow-md w-80 text-center">
                 <h2 className="text-xl font-bold mb-4">Sign Up</h2>
 

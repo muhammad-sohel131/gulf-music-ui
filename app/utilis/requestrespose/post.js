@@ -1,4 +1,7 @@
 const MakePost = async (endpoint, data) => {
+
+    console.log(data);
+
     try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/${endpoint}`, {
             method: "POST",
@@ -7,6 +10,8 @@ const MakePost = async (endpoint, data) => {
             },
             body: JSON.stringify(data),
         });
+
+        console.log(response);
 
         if (!response.ok) {
             console.error(`Request failed with status: ${response.status}`);
@@ -17,7 +22,6 @@ const MakePost = async (endpoint, data) => {
         return res; // Actual response data
 
     } catch (error) {
-        console.error("Request error:", error);
         return false;
     }
 };

@@ -21,7 +21,12 @@ body {
 }
 
 
-.cusotm-celendder {
-  height: fit-content !important;
-  border: 1px solid red;
+.fc-prev-button,
+.fc-today-button,
+.fc-next-button,
+.fc-dayGridMonth-button,
+.fc-timeGridWeek-button,
+.fc-timeGridDay-button {
+  background: #fdef72 !important;
+  color: #171717 !important;
 }
