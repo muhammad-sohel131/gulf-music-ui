@@ -2,6 +2,8 @@
 
 'use client'
 
+import Image from "next/image";
+
 
 const Page = () => {
     return (
@@ -50,7 +52,9 @@ const PhotoCard = () => {
             </button>
 
             {/* Photo */}
-            <img
+            <Image
+                width={1000}
+                height={1000}
                 src="https://i.ytimg.com/vi/tgbNymZ7vqY/maxresdefault.jpg"
                 alt="Sample"
                 className="w-full h-48 object-cover"

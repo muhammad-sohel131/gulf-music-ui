@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 const AdminMerchPanel = ({ onSave }) => {
@@ -98,7 +99,9 @@ const AdminMerchPanel = ({ onSave }) => {
                     <div className="flex gap-4 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
                         {merchItems.map((item, idx) => (
                             <div key={idx} className="bg-gray-100 rounded-lg p-3 flex-shrink-0 w-48 shadow hover:shadow-lg transition">
-                                <img
+                                <Image
+                                    width={1000}
+                                    height={1000}
                                     src={item.image}
                                     alt={item.title}
                                     className="w-full h-40 object-cover rounded-md mb-2"

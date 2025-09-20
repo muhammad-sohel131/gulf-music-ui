@@ -10,14 +10,18 @@ export default function ArtistProfile() {
                     <div className="min-h-screen bg-gray-100 rounded-b-lg pb-20">
                         {/* Cover Photo Section */}
                         <div className="relative h-64 bg-gray-200">
-                            <img
+                            <Image
+                                width={1000}
+                                height={1000}
                                 src="https://i.ytimg.com/vi/tgbNymZ7vqY/maxresdefault.jpg"
                                 alt="Cover Photo"
                                 className="w-full h-full object-cover rounded-t-lg"
                             />
                             {/* Profile Image */}
                             <div className="absolute left-1/2 transform -translate-x-1/2 -bottom-16">
-                                <img
+                                <Image
+                                    width={1000}
+                                    height={1000}
                                     src="https://i.ytimg.com/vi/tgbNymZ7vqY/maxresdefault.jpg"
                                     alt="Profile"
                                     className="w-36 h-36 rounded-full border-4 border-white object-cover shadow-xl"
@@ -35,7 +39,7 @@ export default function ArtistProfile() {
                         <div className="max-w-4xl mx-auto mt-10 p-6 bg-white rounded-2xl shadow-md">
                             <h2 className="text-xl font-semibold mb-3">Biography</h2>
                             <p className="text-gray-600 leading-relaxed">
-                                Emon's music journey started at a young age, inspired by classic pop icons. He has released
+                                Emon&lsquo;s music journey started at a young age, inspired by classic pop icons. He has released
                                 multiple tracks that gained millions of streams across platforms and continues to innovate
                                 in his musical style.
                             </p>

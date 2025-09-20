@@ -2,6 +2,7 @@
 
 import getCookie from "@/app/utilis/helper/cookie/gettooken";
 import MakePost from "@/app/utilis/requestrespose/post";
+import Image from "next/image";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
@@ -73,7 +74,9 @@ const AdminLatestPodcast = () => {
                 {thumbnail && (
                     <div className="mt-4">
                         <p className="text-gray-700 font-medium mb-2">Preview:</p>
-                        <img
+                        <Image
+                            width={1000}
+                            height={1000}
                             src={thumbnail}
                             alt="Podcast Thumbnail"
                             className="w-full h-48 object-cover rounded-lg shadow-md"
