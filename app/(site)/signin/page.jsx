@@ -26,9 +26,6 @@ const Signin = () => {
             setLoading(true);
             const response = await MakePost("api/login", { email, password });
 
-            console.log(response);
-
-
             setLoading(false);
             if (response) {
                 setCookie("token", response?.data?.token, 1);

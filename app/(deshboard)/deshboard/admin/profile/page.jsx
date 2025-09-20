@@ -3,10 +3,8 @@
 import Loading from "@/app/componnent/Loading";
 import getId from "@/app/utilis/helper/cookie/getid";
 import getCookie from "@/app/utilis/helper/cookie/gettooken";
-import handleFileChange from "@/app/utilis/helper/handlefilechange";
 import MakePut from "@/app/utilis/requestrespose/put";
 import useLoadingStore from "@/store/useLoadingStore";
-import Image from "next/image";
 import { useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -22,10 +20,9 @@ const Profile = () => {
     const [email, setEmail] = useState("mdemong87@gmail.com");
     const [city, setCity] = useState("New York");
     const [genre, setGenre] = useState("Pop");
-    const [profilePhoto, setProfilePhoto] = useState('');
-    const [coverPhoto, setCoverPhoto] = useState('');
+    const [profilePhoto, setProfilePhoto] = useState(null);
+    const [coverPhoto, setCoverPhoto] = useState(null);
     const [biography, setBiography] = useState("This is a sample biography.");
-
 
     const handleSubmit = async () => {
         setLoading(true);
@@ -121,37 +118,20 @@ const Profile = () => {
                         <label className="block mb-1">Profile Photo:</label>
                         <input
                             type="file"
-                            onChange={(e) => handleFileChange(e, setProfilePhoto)}
+                            onChange={(e) => setProfilePhoto(e.target.files[0])}
                             disabled={!isEditing}
                             className={`border p-2 rounded-md w-full ${!isEditing ? "bg-gray-100 cursor-not-allowed" : "border-gray-200"}`}
                         />
-
-                        {
-                            profilePhoto && <div>
-                                <div className="w-[150px] h-[150px] mt-5 rounded-md border border-gray-200">
-                                    <Image src={profilePhoto} alt="Profile-Photo" width={1000} height={1000} />
-                                </div>
-                            </div>
-                        }
                     </div>
 
                     <div>
                         <label className="block mb-1">Cover Photo:</label>
                         <input
                             type="file"
-                            onChange={(e) => handleFileChange(e, setCoverPhoto)}
+                            onChange={(e) => setCoverPhoto(e.target.files[0])}
                             disabled={!isEditing}
                             className={`border p-2 rounded-md w-full ${!isEditing ? "bg-gray-100 cursor-not-allowed" : "border-gray-200"}`}
                         />
-
-
-                        {
-                            coverPhoto && <div>
-                                <div className="w-full h-[150px] mt-5 rounded-md border border-gray-200 overflow-hidden object-contain">
-                                    <Image src={coverPhoto} alt="Profile-Photo" width={1000} height={1000} />
-                                </div>
-                            </div>
-                        }
                     </div>
 
                     <div className="md:col-span-2">

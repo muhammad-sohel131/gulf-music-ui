@@ -6,7 +6,7 @@ import useNavIsOpenStore from "@/store/useNavIsOpenStore";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-const ArtistsSidebar = () => {
+const AdminSidebar = () => {
 
 
     const router = useRouter();
@@ -23,8 +23,6 @@ const ArtistsSidebar = () => {
     }
 
 
-
-
     return (
         <div className={`w-full bg-black text-white h-screen sticky top-28 py-12 px-8 ${isOpen ? "flex flex-col" : "hidden lg:flex lg:flex-col"} `}>
 
@@ -32,16 +30,36 @@ const ArtistsSidebar = () => {
                 Deshboard
             </Link>
 
-            <Link onClick={() => { setisOpen(false) }} className="text-xl w-full bg-gray-800 hover:bg-gray-900 py-2 px-3 mb-4 rounded-md" href={'/deshboard/artists/profile'}>
-                Profile
+            <Link onClick={() => { setisOpen(false) }} className="text-xl w-full bg-gray-800 hover:bg-gray-900 py-2 px-3 mb-4 rounded-md" href={'/deshboard/admin/merch'}>
+                Merchandise
             </Link>
 
-            <Link onClick={() => { setisOpen(false) }} className="text-xl w-full bg-gray-800 hover:bg-gray-900 py-2 px-3 mb-4 rounded-md" href={'/deshboard/artists/photo'}>
-                Photo
+            <Link onClick={() => { setisOpen(false) }} className="text-xl w-full bg-gray-800 hover:bg-gray-900 py-2 px-3 mb-4 rounded-md" href={'/deshboard/admin/waves'}>
+                Waves
             </Link>
+
+            <Link onClick={() => { setisOpen(false) }} className="text-xl w-full bg-gray-800 hover:bg-gray-900 py-2 px-3 mb-4 rounded-md" href={'/deshboard/admin/podcasts'}>
+                Podcasts
+            </Link>
+
+            <Link onClick={() => { setisOpen(false) }} className="text-xl w-full bg-gray-800 hover:bg-gray-900 py-2 px-3 mb-4 rounded-md" href={'/deshboard/admin/inquiries'}>
+                Inquiries
+            </Link>
+
+            <Link onClick={() => { setisOpen(false) }} className="text-xl w-full bg-gray-800 hover:bg-gray-900 py-2 px-3 mb-4 rounded-md" href={'/deshboard/artists/profile'}>
+                All Artists
+            </Link>
+
+            <Link onClick={() => { setisOpen(false) }} className="text-xl w-full bg-gray-800 hover:bg-gray-900 py-2 px-3 mb-4 rounded-md" href={'/deshboard/artists/profile'}>
+                All Journalists
+            </Link>
+
+
+
+
 
             <Link onClick={() => { setisOpen(false) }} className="text-xl w-full bg-gray-800 hover:bg-gray-900 py-2 px-3 mb-4 rounded-md" href={'/deshboard/artists/song'}>
-                Song
+                All Songs
             </Link>
 
 
@@ -56,4 +74,4 @@ const ArtistsSidebar = () => {
     )
 }
 
-export default ArtistsSidebar;
+export default AdminSidebar;

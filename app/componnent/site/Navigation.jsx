@@ -16,33 +16,33 @@ const Navigation = ({ isnavOpen, setisnavOpen }) => {
         {
             title: "Artists",
             options: [
-                { name: "Rap", Link: "/rap" },
-                { name: "Country", Link: "/country" },
-                { name: "Pop", Link: "/pop" },
-                { name: "Rock", Link: "/rock" },
-                { name: "Jazz", Link: "/jazz" },
-                { name: "Reggae", Link: "/reggae" },
-                { name: "EDM", Link: "/edm" },
-                { name: "Classical", Link: "/classical" },
-                { name: "Other", Link: "/other" }
+                { name: "Rap", Link: "/artists/rap" },
+                { name: "Country", Link: "/artists/country" },
+                { name: "Pop", Link: "/artists/pop" },
+                { name: "Rock", Link: "/artists/rock" },
+                { name: "Jazz", Link: "/artists/jazz" },
+                { name: "Reggae", Link: "/artists/reggae" },
+                { name: "EDM", Link: "/artists/edm" },
+                { name: "Classical", Link: "/artists/classical" },
+                { name: "Other", Link: "/artists/other" }
             ]
         },
         {
             title: "Venues",
             options: [
-                { name: "New Orleans", Link: "/new-orleans" },
-                { name: "Biloxi", Link: "/biloxi" },
-                { name: "Mobile", Link: "/mobile" },
-                { name: "Pensacola", Link: "/pensacola" }
+                { name: "New Orleans", Link: "/venues/new-orleans" },
+                { name: "Biloxi", Link: "/venues/biloxi" },
+                { name: "Mobile", Link: "/venues/mobile" },
+                { name: "Pensacola", Link: "/venues/pensacola" }
             ]
         },
         {
             title: "News",
             options: [
-                { name: "New Orleans", Link: "/new-orleans" },
-                { name: "Biloxi", Link: "/biloxi" },
-                { name: "Mobile", Link: "/mobile" },
-                { name: "Pensacola", Link: "/pensacola" }
+                { name: "New Orleans", Link: "/news/new-orleans" },
+                { name: "Biloxi", Link: "/news/biloxi" },
+                { name: "Mobile", Link: "/news/mobile" },
+                { name: "Pensacola", Link: "/news/pensacola" }
             ]
         },
     ];
@@ -57,14 +57,15 @@ const Navigation = ({ isnavOpen, setisnavOpen }) => {
                         key={index}
                         className="relative"
                         onMouseEnter={() => setOpenMenu(index)}
+                        onMouseLeave={() => setOpenMenu(null)}
                     >
                         <button className="hover:text-gray-300 text-xl text-yellow-50 cursor-pointer">{item.title}</button>
 
                         {/* Dropdown */}
                         {openMenu === index && (
                             <div
-                                onMouseLeave={() => setOpenMenu(null)}
-                                className="absolute top-full left-0 mt-2 bg-yellow-100 text-black rounded shadow-lg w-40 z-50"
+
+                                className="absolute top-full left-0 mt-3 bg-yellow-100 text-black rounded shadow-lg w-40 z-50 trasnspace"
                             >
                                 {item.options.map((option, i) => (
                                     <Link

@@ -1,28 +1,23 @@
-const MakeDelete = async (endpoint, auth = null) => {
+const MakeDelete = async (endpoint, token) => {
+
     try {
-        const headers = {
-            "Content-Type": "application/json",
-        };
-
-        if (auth) {
-            headers["Authorization"] = `Bearer ${auth}`;
-        }
-
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/${endpoint}`, {
             method: "DELETE",
-            headers,
+            headers: {
+                "Authorization": `Bearer ${token}`,
+            }
         });
 
         if (!response.ok) {
-            console.error(`DELETE request failed with status: ${response.status}`);
+            console.error(`Delete request failed with status: ${response.status}`);
             return false;
         }
 
-        const res = await response.json(); // Optional: use if backend returns deleted data
-        return res; // Return deleted data or success message
+        const res = await response.json();
+        return res;
 
     } catch (error) {
-        console.error("DELETE request error:", error);
+        console.error("Delete request error:", error);
         return false;
     }
 };

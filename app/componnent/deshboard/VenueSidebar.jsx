@@ -6,7 +6,7 @@ import useNavIsOpenStore from "@/store/useNavIsOpenStore";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-const ArtistsSidebar = () => {
+const VenuesSidebar = () => {
 
 
     const router = useRouter();
@@ -56,4 +56,4 @@ const ArtistsSidebar = () => {
     )
 }
 
-export default ArtistsSidebar;
+export default VenuesSidebar;

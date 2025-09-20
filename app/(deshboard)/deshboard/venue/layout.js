@@ -1,6 +1,5 @@
-import ArtistsSidebar from "../../../componnent/deshboard/ArtistsSidebar";
+import VenuesSidebar from "@/app/componnent/deshboard/VenueSidebar";
 import Header from "../../../componnent/deshboard/Header";
-import Footer from "../../../componnent/site/Footer";
 
 export default function SiteLayout({ children }) {
   return (
@@ -8,13 +7,12 @@ export default function SiteLayout({ children }) {
       <Header />
       <div className="pt-[100px] grid grid-cols-12 gap-5">
         <div className="col-span-3 relative w-full">
-          <ArtistsSidebar />
+          <VenuesSidebar />
         </div>
         <div className="col-span-9 w-full pt-12 pr-10 h-fit pb-12">
           {children}
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

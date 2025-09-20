@@ -1,6 +1,5 @@
 const MakePut = async (endpoint, data, token) => {
 
-    console.log(data);
 
     try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/${endpoint}`, {

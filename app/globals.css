@@ -30,3 +30,76 @@ body {
   background: #fdef72 !important;
   color: #171717 !important;
 }
+
+
+
+
+.hhhhh::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background: #fef9c2;
+  position: absolute;
+  top: 20;
+  right: 18;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  transform: translateY(-100%);
+}
+
+
+.trasnspace::before {
+  content: '';
+  width: 100%;
+  height: 15px;
+  background: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(-100%);
+}
+
+.trasnspace::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background: #fef9c2;
+  position: absolute;
+  top: 0;
+  left: 18;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  transform: translateY(-100%);
+}
+
+
+
+
+
+
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  /* Light track color */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  /* Gray scrollbar */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #999999;
+  /* Darker on hover */
+}
+
+/* Firefox support */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #c1c1c1 #f1f1f1;
+}

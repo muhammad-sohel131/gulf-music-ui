@@ -1,10 +1,11 @@
-const MakePost = async (endpoint, data) => {
+const MakePost = async (endpoint, data, token) => {
 
     try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/${endpoint}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`,
             },
             body: JSON.stringify(data),
         });

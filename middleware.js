@@ -24,6 +24,9 @@ export default async function middleware(req) {
     // Check token validity
     const decoded = token ? await verifyJWT(token) : null;
 
+    console.log('check start');
+    console.log(decoded);
+    console.log('check end');
 
     // Protected routes
     const protectedRoutes = ["/deshboard"];

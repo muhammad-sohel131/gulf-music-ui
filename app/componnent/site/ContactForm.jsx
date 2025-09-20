@@ -1,26 +1,61 @@
 "use client";
+
+import getCookie from "@/app/utilis/helper/cookie/gettooken";
+import MakePost from "@/app/utilis/requestrespose/post";
+import useLoadingStore from "@/store/useLoadingStore";
 import { useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
 import Container from "../Container";
+import Loading from "../Loading";
 
 export default function ContactForm() {
+
+
+    const token = getCookie();
+    const { isLoading, setLoading } = useLoadingStore();
     const [email, setEmail] = useState("");
     const [subject, setSubject] = useState("");
     const [message, setMessage] = useState("");
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Email:", email);
-        console.log("Subject:", subject);
-        console.log("Message:", message);
 
-        // Clear form data
-        setEmail("");
-        setSubject("");
-        setMessage("");
+
+        if (email && subject && message) {
+
+            setLoading(true);
+
+            const formdata = {
+                email: email,
+                sub: subject,
+                mes: message
+            }
+
+            const res = await MakePost('/api/contact', formdata, token);
+
+            if (res) {
+                setEmail("");
+                setSubject("");
+                setMessage("");
+                toast.success(res?.message);
+            } else {
+                toast.error(res?.message);
+            }
+
+
+        } else {
+            toast.warn("This field is required");
+        }
+
+
+
+
+
     };
 
     return (
         <div className="h-fit w-full bg-gray-100 bg-gradient-to-b from-white to-black pb-24 pt-12">
+            {isLoading && <Loading />}
             <Container>
                 <div className="flex justify-center items-center">
                     <div className="bg-yellow-50 p-6 rounded-lg w-3/4">
@@ -32,7 +67,6 @@ export default function ContactForm() {
                                 placeholder="Email Address"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                required
                                 className="w-full px-3 py-2 border border-gray-300 rounded-md outline-none"
                             />
 
@@ -41,7 +75,6 @@ export default function ContactForm() {
                                 placeholder="Subject"
                                 value={subject}
                                 onChange={(e) => setSubject(e.target.value)}
-                                required
                                 className="w-full px-3 py-2 border border-gray-300 rounded-md outline-none"
                             />
 
@@ -50,7 +83,6 @@ export default function ContactForm() {
                                 value={message}
                                 onChange={(e) => setMessage(e.target.value)}
                                 rows={4}
-                                required
                                 className="w-full px-3 py-2 border border-gray-300 rounded-md outline-none"
                             ></textarea>
 
@@ -64,6 +96,7 @@ export default function ContactForm() {
                     </div>
                 </div>
             </Container>
+            <ToastContainer position="bottom-right" />
         </div>
     );
 }

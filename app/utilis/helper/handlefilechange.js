@@ -1,6 +1,7 @@
 import { toast } from "react-toastify";
+import imageToBase64 from "./imageToBase64";
 
-const handleFileChange = (e, seter, previewseter) => {
+const handleFileChange = async (e, seter) => {
     const file = e.target.files[0];
 
     if (!file) return;
@@ -13,8 +14,7 @@ const handleFileChange = (e, seter, previewseter) => {
     }
 
     // ✅ File is valid
-    seter(file);
-    previewseter(URL.createObjectURL(file));
+    seter(await imageToBase64(file));
 };
 
 export default handleFileChange;
