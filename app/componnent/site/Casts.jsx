@@ -26,9 +26,9 @@ const CastsSection = () => {
                         {favorites.map((item, idx) => (
                             <div
                                 key={idx}
-                                className="flex gap-4 p-3 mb-3 bg-yellow-50 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer overflow-hidden"
+                                className="flex gap-3 p-3 mb-3 bg-yellow-50 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer overflow-hidden"
                             >
-                                <div className="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">
+                                <div className="w-24 h-14 flex-shrink-0 rounded-lg overflow-hidden">
                                     <Image
                                         src={item.thumbnail}
                                         alt={item.name}
