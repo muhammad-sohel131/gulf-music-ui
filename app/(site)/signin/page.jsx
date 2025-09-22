@@ -28,6 +28,9 @@ const Signin = () => {
 
 
             setLoading(false);
+
+            console.log(response);
+
             if (response) {
                 setCookie("token", response?.data?.token, 1);
                 setCookie("id", response?.data?.user?.id, 1)
