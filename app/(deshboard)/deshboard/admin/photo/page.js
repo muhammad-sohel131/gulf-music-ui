@@ -118,7 +118,7 @@ const Page = () => {
                     </div>
                 ) : (
                     <div className="grid grid-cols-4 item-center gap-5 mt-8">
-                        <h3>NO Image Found</H3>
+                        <h3>NO Image Found</h3>
                     </div>
                 )
             }
