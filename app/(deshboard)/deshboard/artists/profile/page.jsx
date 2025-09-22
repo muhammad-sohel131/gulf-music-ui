@@ -4,11 +4,12 @@ import Loading from "@/app/componnent/Loading";
 import getId from "@/app/utilis/helper/cookie/getid";
 import getCookie from "@/app/utilis/helper/cookie/gettooken";
 import handleFileChange from "@/app/utilis/helper/handlefilechange";
+import MakeGet from "@/app/utilis/requestrespose/get";
 import MakePut from "@/app/utilis/requestrespose/put";
 import useLoadingStore from "@/store/useLoadingStore";
 import Image from "next/image";
-import { useState } from "react";
-import { ToastContainer } from "react-toastify";
+import { useCallback, useEffect, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Profile = () => {
@@ -18,15 +19,55 @@ const Profile = () => {
     const [isEditing, setIsEditing] = useState(false);
 
     // Individual state for each field
-    const [name, setName] = useState("John Doe");
-    const [email, setEmail] = useState("mdemong87@gmail.com");
-    const [city, setCity] = useState("New York");
-    const [genre, setGenre] = useState("Pop");
+    const [signleProfile, setsignleProfile] = useState(null);
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [city, setCity] = useState('');
+    const [genre, setGenre] = useState('');
     const [profilePhoto, setProfilePhoto] = useState('');
     const [coverPhoto, setCoverPhoto] = useState('');
-    const [biography, setBiography] = useState("This is a sample biography.");
+    const [biography, setBiography] = useState('');
 
 
+
+
+
+    const getSingleProfile = useCallback(async () => {
+        setLoading(true);
+
+        const res = await MakeGet(`api/artists`, token);
+
+        if (res) {
+            setsignleProfile(res?.data);
+            setName(res?.data?.name);
+            setEmail(res?.data?.email);
+            setGenre(res?.data?.genre);
+            setCity(res?.data?.city);
+            setBiography(res?.data?.bio);
+            setProfilePhoto(res?.data?.image_url);
+            setCoverPhoto(res?.data?.cover_photo_url);
+            toast.success(res?.data?.message);
+        } else {
+            toast.error(res?.message);
+        }
+
+
+        setLoading(false);
+    }, [token])
+
+
+
+    /******* run one time and get single profile data *******/
+    useEffect(() => {
+        getSingleProfile();
+    }, [])
+
+
+
+    console.log(signleProfile);
+
+
+    /************** hanlde sunmite function is here ****************/
     const handleSubmit = async () => {
         setLoading(true);
 
@@ -43,9 +84,21 @@ const Profile = () => {
 
         const res = await MakePut(`api/artists/${id}`, data, token);
 
+        console.log(res);
+
+        if (res) {
+            toast.success(res?.message);
+            getSingleProfile();
+        } else {
+            toast.error("There was a server side problem");
+        }
+
+
         setLoading(false);
 
     };
+
+
 
     return (
         <div className="p-4">
@@ -128,7 +181,7 @@ const Profile = () => {
 
                         {
                             profilePhoto && <div>
-                                <div className="w-[150px] h-[150px] mt-5 rounded-md border border-gray-200">
+                                <div className="w-[150px] h-[150px] mt-5 rounded-md border border-gray-200 mb-4 overflow-hidden">
                                     <Image src={profilePhoto} alt="Profile-Photo" width={1000} height={1000} />
                                 </div>
                             </div>
@@ -147,7 +200,7 @@ const Profile = () => {
 
                         {
                             coverPhoto && <div>
-                                <div className="w-full h-[150px] mt-5 rounded-md border border-gray-200 overflow-hidden object-contain">
+                                <div className="w-full h-[150px] mt-5 rounded-md border border-gray-200 overflow-hidden object-contain mb-4 overflow-hidden">
                                     <Image src={coverPhoto} alt="Profile-Photo" width={1000} height={1000} />
                                 </div>
                             </div>
@@ -170,7 +223,7 @@ const Profile = () => {
                 <div className="flex justify-end">
                     <button
                         onClick={handleSubmit}
-                        className="bg-yellow-600 rounded-md px-4 py-2 text-white text-lg mt-4 hover:bg-yellow-700 transition"
+                        className="bg-yellow-600 rounded-md px-4 py-2 text-white text-lg mt-4 hover:bg-yellow-700 transition cursor-pointer"
                     >
                         Save
                     </button>

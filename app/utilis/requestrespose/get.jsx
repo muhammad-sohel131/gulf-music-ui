@@ -1,17 +1,14 @@
-const MakeGetAll = async (endpoint, auth = null) => {
+const MakeGet = async (endpoint, token) => {
     try {
-        const headers = {
-            "Content-Type": "application/json",
-        };
-
-        if (auth) {
-            headers["Authorization"] = `Bearer ${auth}`;
-        }
-
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/${endpoint}`, {
             method: "GET",
-            headers,
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`,
+                "Accept": "application/json"
+            },
         });
+
 
         if (!response.ok) {
             console.error(`GET request failed with status: ${response.status}`);
@@ -19,7 +16,7 @@ const MakeGetAll = async (endpoint, auth = null) => {
         }
 
         const res = await response.json();
-        return res; // Returns all data from endpoint
+        return res;
 
     } catch (error) {
         console.error("GET request error:", error);
@@ -27,4 +24,4 @@ const MakeGetAll = async (endpoint, auth = null) => {
     }
 };
 
-export default MakeGetAll;
+export default MakeGet;

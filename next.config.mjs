@@ -2,7 +2,7 @@
 const nextConfig = {
 
     images: {
-        domains: ['i.ytimg.com'],
+        domains: ['i.ytimg.com', 'gulf.sardaritskillshare.com'],
     },
 
     async rewrites() {
