@@ -74,7 +74,6 @@ const Profile = () => {
         const data = {
             user_id: id,
             name,
-            email,
             city,
             genre,
             image: profilePhoto,
@@ -86,10 +85,14 @@ const Profile = () => {
         console.log(data);
 
 
-        const res = await MakePut(`api/artists/${id}`, data, token);
+        const res = await MakePut(`api/artist/${signleProfile?.id}/profile`, data, token);
 
+        console.log(res);
 
         if (res) {
+
+            console.log(res);
+
             toast.success(res?.message);
             getSingleProfile();
         } else {
@@ -137,7 +140,7 @@ const Profile = () => {
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            disabled={!isEditing}
+                            disabled={true}
                             className={`border p-2 rounded-md w-full ${!isEditing ? "bg-gray-100 cursor-not-allowed" : "border-gray-200"}`}
                         />
                     </div>
@@ -185,7 +188,7 @@ const Profile = () => {
                         {
                             profilePhoto && <div>
                                 <div className="w-[150px] h-[150px] mt-5 rounded-md border border-gray-200 mb-4 overflow-hidden">
-                                    <Image src={profilePhoto} alt="Profile-Photo" width={1000} height={1000} />
+                                    <Image priority src={profilePhoto} alt="Profile-Photo" width={1000} height={1000} />
                                 </div>
                             </div>
                         }
@@ -204,7 +207,7 @@ const Profile = () => {
                         {
                             coverPhoto && <div>
                                 <div className="w-full h-[150px] mt-5 rounded-md border border-gray-200 overflow-hidden object-contain mb-4 overflow-hidden">
-                                    <Image src={coverPhoto} alt="Profile-Photo" width={1000} height={1000} />
+                                    <Image priority src={coverPhoto} alt="Profile-Photo" width={1000} height={1000} />
                                 </div>
                             </div>
                         }

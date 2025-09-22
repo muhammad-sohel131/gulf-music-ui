@@ -53,7 +53,7 @@ const AuthBtnandProfileForheader = () => {
 
                             <div className="hidden group-hover:block absolute top-10 right-0">
                                 <div className="h-[20px] w-full bg-transparent"></div>
-                                <div className="w-fit px-8 bg-yellow-100 text-gray-900 rounded-md py-3 px-3 flex flex-col hhhhh">
+                                <div className="w-fit px-8 bg-yellow-100 text-gray-900 rounded-md py-3 px-3 flex flex-col shadow-xl hhhhh">
                                     <Link href={'/deshboard/artists'} className="text-lg text-center pb-2 cursor-pointer">Deshboard</Link>
                                     <button onClick={() => { handleLogout() }} className="text-lg text-center cursor-pointer">Logout</button>
                                 </div>
