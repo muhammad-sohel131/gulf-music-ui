@@ -2,7 +2,7 @@
 
 import Loading from "@/app/componnent/Loading";
 import setCookie from "@/app/utilis/helper/cookie/setcookie";
-import MakePost from "@/app/utilis/requestrespose/post";
+import logingandsignupmakepost from "@/app/utilis/requestrespose/logingandsignupmakepost";
 import useLoadingStore from "@/store/useLoadingStore";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -24,7 +24,7 @@ const Signin = () => {
 
         if (email && password) {
             setLoading(true);
-            const response = await MakePost("api/login", { email, password });
+            const response = await logingandsignupmakepost("api/login", { email, password });
 
             setLoading(false);
             if (response) {

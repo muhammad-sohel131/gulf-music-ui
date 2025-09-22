@@ -1,7 +1,7 @@
 'use client'
 
 import Loading from "@/app/componnent/Loading";
-import MakePost from "@/app/utilis/requestrespose/post";
+import logingandsignupmakepost from "@/app/utilis/requestrespose/logingandsignupmakepost";
 import useLoadingStore from "@/store/useLoadingStore";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -27,7 +27,7 @@ const SignUP = () => {
 
         if (name && email && password && role) {
             setLoading(true);
-            const response = await MakePost("api/register", { name, email, password, role });
+            const response = await logingandsignupmakepost("api/register", { name, email, password, role });
             setLoading(false);
             if (response) {
                 setres(response);
