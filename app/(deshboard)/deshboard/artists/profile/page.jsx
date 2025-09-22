@@ -90,7 +90,7 @@ const Profile = () => {
             toast.success(res?.message);
             getSingleProfile();
         } else {
-            toast.error("There was a server side problem");
+            toast.error(res?.message);
         }
 
 
