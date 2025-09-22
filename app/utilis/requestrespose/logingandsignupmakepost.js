@@ -1,13 +1,12 @@
 const logingandsignupmakepost = async (endpoint, data) => {
 
-
-
     try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/${endpoint}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
+            credentials: 'include',
             body: JSON.stringify(data),
         });
 
