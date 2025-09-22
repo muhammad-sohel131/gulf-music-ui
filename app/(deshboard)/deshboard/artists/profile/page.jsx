@@ -82,15 +82,18 @@ const Profile = () => {
             bio: biography
         }
 
+
+        console.log(data);
+
+
         const res = await MakePut(`api/artists/${id}`, data, token);
 
-        console.log(res);
 
         if (res) {
             toast.success(res?.message);
             getSingleProfile();
         } else {
-            toast.error(res?.message);
+            toast.error("There was server side problem");
         }
 
 
