@@ -82,9 +82,6 @@ const Profile = () => {
         }
 
 
-        console.log(data);
-
-
         const res = await MakePut(`api/artist/${signleProfile?.id}/profile`, data, token);
 
         console.log(res);

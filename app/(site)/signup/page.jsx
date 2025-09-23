@@ -2,10 +2,10 @@
 
 import Loading from "@/app/componnent/Loading";
 import logingandsignupmakepost from "@/app/utilis/requestrespose/logingandsignupmakepost";
-import useLoadingStore from "@/store/useLoadingStore";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import useLoadingStore from "../../../store/useLoadingStore";
 
 
 const SignUP = () => {
