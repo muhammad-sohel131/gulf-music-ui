@@ -13,11 +13,6 @@ const MakePut = async (endpoint, data, token) => {
         });
 
 
-        if (!response.ok) {
-            console.error(`PUT request failed with status: ${response.status}`);
-            return false;
-        }
-
         const res = await response.json();
         return res;
 

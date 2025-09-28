@@ -86,14 +86,14 @@ const Profile = () => {
 
         console.log(res);
 
-        if (res) {
+        if (res.success) {
 
             console.log(res);
 
             toast.success(res?.message);
             getSingleProfile();
         } else {
-            toast.error("There was server side problem");
+            toast.error(res?.message);
         }
 
 

@@ -2,9 +2,11 @@
 
 
 import setCookie from "@/app/utilis/helper/cookie/setcookie";
+import MakePost from "@/app/utilis/requestrespose/post";
 import useNavIsOpenStore from "@/store/useNavIsOpenStore";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const AdminSidebar = () => {
 
@@ -13,15 +15,22 @@ const AdminSidebar = () => {
     const { isOpen, setisOpen } = useNavIsOpenStore();
 
 
-    function handleLogout() {
+    async function handleLogout() {
 
-        setCookie("token", '');
-        setCookie("name", '');
-        setCookie("role", '');
-        router.refresh();
 
+        const response = await MakePost('api/logout', {}, token);
+
+        if (response) {
+            toast.success(response?.message);
+            setCookie("token", '');
+            setCookie("name", '');
+            setCookie("role", '');
+            setCookie("id", '');
+            router.refresh();
+        } else {
+            toast.error("Something went wrong");
+        }
     }
-
 
     return (
         <div className={`w-full bg-black text-white h-screen sticky top-28 py-12 px-8 ${isOpen ? "flex flex-col" : "hidden lg:flex lg:flex-col"} `}>

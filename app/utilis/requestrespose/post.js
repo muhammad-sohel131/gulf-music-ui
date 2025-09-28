@@ -1,7 +1,6 @@
 const MakePost = async (endpoint, data, token) => {
 
-
-    console.log(token);
+    console.log(data);
 
     try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/${endpoint}`, {
@@ -9,9 +8,12 @@ const MakePost = async (endpoint, data, token) => {
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`,
+                "Accept": "application/json",
             },
             body: JSON.stringify(data),
         });
+
+        console.log(response);
 
 
         if (!response.ok) {

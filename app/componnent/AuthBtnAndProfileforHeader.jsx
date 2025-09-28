@@ -5,10 +5,12 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { FaRegUser } from "react-icons/fa";
+import { toast } from "react-toastify";
 import getEmail from "../utilis/helper/cookie/getemail";
 import getRole from "../utilis/helper/cookie/getrole";
 import getCookie from "../utilis/helper/cookie/gettooken";
 import setCookie from "../utilis/helper/cookie/setcookie";
+import MakePost from "../utilis/requestrespose/post";
 
 const AuthBtnandProfileForheader = () => {
 
@@ -26,13 +28,21 @@ const AuthBtnandProfileForheader = () => {
 
 
 
-    function handleLogout() {
+    async function handleLogout() {
 
-        setCookie("token", '');
-        setCookie("name", '');
-        setCookie("role", '');
-        router.refresh();
 
+        const response = await MakePost('api/logout', {}, token);
+
+        if (response) {
+            toast.success(response?.message);
+            setCookie("token", '');
+            setCookie("name", '');
+            setCookie("role", '');
+            setCookie("id", '');
+            router.refresh();
+        } else {
+            toast.error("Something went wrong");
+        }
     }
 
 

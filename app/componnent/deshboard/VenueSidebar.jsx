@@ -2,9 +2,11 @@
 
 
 import setCookie from "@/app/utilis/helper/cookie/setcookie";
+import MakePost from "@/app/utilis/requestrespose/post";
 import useNavIsOpenStore from "@/store/useNavIsOpenStore";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const VenuesSidebar = () => {
 
@@ -13,13 +15,21 @@ const VenuesSidebar = () => {
     const { isOpen, setisOpen } = useNavIsOpenStore();
 
 
-    function handleLogout() {
+    async function handleLogout() {
 
-        setCookie("token", '');
-        setCookie("name", '');
-        setCookie("role", '');
-        router.refresh();
 
+        const response = await MakePost('api/logout', {}, token);
+
+        if (response) {
+            toast.success(response?.message);
+            setCookie("token", '');
+            setCookie("name", '');
+            setCookie("role", '');
+            setCookie("id", '');
+            router.refresh();
+        } else {
+            toast.error("Something went wrong");
+        }
     }
 
 
