@@ -1,3 +1,5 @@
+'use client'
+
 import { toast } from "react-toastify";
 import convertDriveLink from "../utilis/helper/convertDriveLink";
 import getCookie from "../utilis/helper/cookie/gettooken";
