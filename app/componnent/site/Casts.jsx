@@ -1,13 +1,13 @@
 "use client";
 
 import Image from "next/image";
-
+import tham from "../../../public/thamnail.jpg";
 
 const CastsSection = () => {
     const latestPodcast = {
-        title: "Building the Future: AI & Web Development",
-        thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-        link: "https://www.youtube.com/watch?v=wQDt50YQC9c",
+        title: "Uncle Emmington - The Furniture Song | Wave #87",
+        thumbnail: { tham },
+        link: "https://youtu.be/1aqzOZtewp0?si=rzKpqAwQJsq6UwTG",
     };
 
     const favorites = Array(8).fill({
@@ -30,7 +30,7 @@ const CastsSection = () => {
                             >
                                 <div className="w-24 h-14 flex-shrink-0 rounded-lg overflow-hidden">
                                     <Image
-                                        src={item.thumbnail}
+                                        src={tham}
                                         alt={item.name}
                                         width={96}
                                         height={96}
@@ -58,7 +58,7 @@ const CastsSection = () => {
                         <a href={latestPodcast.link} target="_blank" rel="noopener noreferrer">
                             <div className="relative w-full h-60 sm:h-72 lg:h-92">
                                 <Image
-                                    src={latestPodcast.thumbnail}
+                                    src={tham}
                                     alt={latestPodcast.title}
                                     fill
                                     className="object-cover"
