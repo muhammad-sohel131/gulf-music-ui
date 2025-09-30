@@ -54,7 +54,7 @@ export default function ContactForm() {
     };
 
     return (
-        <div className="h-fit w-full bg-gray-100 bg-gradient-to-b from-white to-black pb-24 pt-12">
+        <div className="h-fit w-full bg-gray-100 bg-gradient-to-b from-white to-black pb-6 pt-12">
             {isLoading && <Loading />}
             <Container>
                 <div className="flex justify-center items-center">
@@ -67,7 +67,7 @@ export default function ContactForm() {
                                 placeholder="Email Address"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                className="w-full px-3 py-2 border border-gray-300 rounded-md outline-none"
+                                className="w-full px-3 py-2 border border-gray-200 rounded-md outline-none bg-white"
                             />
 
                             <input
@@ -75,15 +75,15 @@ export default function ContactForm() {
                                 placeholder="Subject"
                                 value={subject}
                                 onChange={(e) => setSubject(e.target.value)}
-                                className="w-full px-3 py-2 border border-gray-300 rounded-md outline-none"
+                                className="w-full px-3 py-2 border border-gray-200 rounded-md outline-none bg-white"
                             />
 
                             <textarea
                                 placeholder="Message"
                                 value={message}
                                 onChange={(e) => setMessage(e.target.value)}
-                                rows={4}
-                                className="w-full px-3 py-2 border border-gray-300 rounded-md outline-none"
+                                rows={7}
+                                className="w-full px-3 py-2 border border-gray-200 rounded-md outline-none bg-white"
                             ></textarea>
 
                             <button
@@ -100,3 +100,6 @@ export default function ContactForm() {
         </div>
     );
 }
+
+
+

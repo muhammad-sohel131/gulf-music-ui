@@ -91,7 +91,7 @@ export default function Calendar() {
     }, []);
 
     return (
-        <div className="relative bg-gray-50 py-16">
+        <div className="relative bg-gray-50 w-full">
             <Container>
                 <div className="flex items-center justify-between shadow-md border border-gray-200 bg-white rounded-t-xl w-full py-6 px-2 sm:px-4">
                     <h3 className="text-2xl">Calender Board</h3>

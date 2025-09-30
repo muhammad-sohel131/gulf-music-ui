@@ -37,9 +37,9 @@ const MerchSection = () => {
     ];
 
     return (
-        <section>
+        <section className="w-full">
             <Container>
-                <div className="w-full mx-auto py-12 px-4">
+                <div className="w-full">
                     {/* Section Title */}
                     <h2 className="text-3xl font-bold text-gray-900 mb-6">Merch</h2>
 
