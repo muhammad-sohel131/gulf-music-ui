@@ -3,15 +3,16 @@
 import Image from "next/image";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import artisteImage from "../../../public/fevartistImage.jpg";
 
 export default function FevArtist() {
     const artists = [
-        { name: "BILLIE EILISH", img: "https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" },
-        { name: "DADDY YANKEE", img: "https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" },
-        { name: "CARDI B", img: "https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" },
-        { name: "BRUNO MARS", img: "https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" },
-        { name: "LAUV", img: "https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" },
-        { name: "CHARLIE PUTH", img: "https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" },
+        { name: "BILLIE EILISH", img: artisteImage },
+        { name: "DADDY YANKEE", img: artisteImage },
+        { name: "CARDI B", img: artisteImage },
+        { name: "BRUNO MARS", img: artisteImage },
+        { name: "LAUV", img: artisteImage },
+        { name: "CHARLIE PUTH", img: artisteImage },
     ];
 
     return (
@@ -57,7 +58,7 @@ export default function FevArtist() {
                 ))}
             </Swiper>
 
-            <button className="mt-6 px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition cursor-pointer bg-yellow-300">
+            <button className="mt-6 px-6 py-2 text-black rounded-lg hover:bg-yellow-400 transition cursor-pointer bg-yellow-300">
                 Read more
             </button>
         </section>
