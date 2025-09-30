@@ -58,7 +58,7 @@ export default function ContactForm() {
             {isLoading && <Loading />}
             <Container>
                 <div className="flex justify-center items-center">
-                    <div className="bg-yellow-50 p-6 rounded-lg w-3/4">
+                    <div className="bg-yellow-50 p-6 rounded-lg w-4/4 lg:w-3/4">
                         <h2 className="text-xl font-bold mb-4 text-center">For any inquiries:</h2>
 
                         <form onSubmit={handleSubmit} className="space-y-4">

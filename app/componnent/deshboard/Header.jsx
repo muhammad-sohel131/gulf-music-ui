@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import { FaBars } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
 import AuthBtnandProfileForheader from "../AuthBtnAndProfileforHeader";
-import Container from "../Container";
+import HeaderContainer from "../site/HeaderContainer";
 import ArtistsNavigation from "./ArtistsNavigation";
 
 export default function Header() {
@@ -18,7 +18,7 @@ export default function Header() {
 
     return (
         <header className={`text-white w-screen fixed top-0 left-0 z-40 bg-black py-1 border-b-1 border-gray-50`}>
-            <Container>
+            <HeaderContainer>
                 <div className="flex items-center justify-between relative">
                     {/* Logo */}
                     <Link href={'/'} className="w-fit">
@@ -39,7 +39,7 @@ export default function Header() {
                     {/* Auth Buttons */}
                     <AuthBtnandProfileForheader />
                 </div>
-            </Container>
+            </HeaderContainer>
         </header>
     );
 }

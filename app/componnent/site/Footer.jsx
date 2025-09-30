@@ -46,7 +46,7 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Connect With Us</h3>
             <ul className="space-y-2 text-gray-200 flex flex-col">
               <Link href={'/'} className="flex items-center gap-2"><MdPhone /> +880 1713 738679</Link>
-              <Link href={'/'} className="flex items-center gap-2"><MdEmail /> chandashmshighschool@gmail.com</Link>
+              <Link href={'/'} className="flex items-center gap-2"><MdEmail /> thegulfcoastmusic@gmail.com</Link>
               <Link href={'/'} className="flex items-center gap-2"><MdLocationOn /> Chandash, Mohadevpur, Naogoan</Link>
             </ul>
             <div className="flex gap-4 mt-4 text-xl">

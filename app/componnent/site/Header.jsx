@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaBars } from "react-icons/fa";
 import AuthBtnandProfileForheader from "../AuthBtnAndProfileforHeader";
-import Container from "../Container";
+import HeaderContainer from "./HeaderContainer";
 import Navigation from "./Navigation";
 
 export default function Header() {
@@ -26,7 +26,7 @@ export default function Header() {
 
   return (
     <header className={`text-white w-screen fixed top-0 left-0 z-40 ${pathname === "/" ? scrollHeight > 100 ? "bg-black py-1" : "bg-transparent py-1" : "bg-black py-1"}`}>
-      <Container>
+      <HeaderContainer>
         <div className="flex items-center justify-between relative">
           {/* Logo */}
           <Link href={'/'} className="w-fit">
@@ -41,7 +41,7 @@ export default function Header() {
           {/* Auth Buttons */}
           <AuthBtnandProfileForheader />
         </div>
-      </Container>
+      </HeaderContainer>
     </header>
   );
 }
