@@ -44,7 +44,7 @@ const Signin = () => {
                         router.push('/deshboard/admin');
                         break;
                     case "Artist":
-                        router.push('/deshboard/artists');
+                        router.push('/deshboard/artists/profile');
                         break;
                     case "Venue":
                         router.push('/deshboard/venue');

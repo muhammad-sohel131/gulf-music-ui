@@ -23,9 +23,10 @@ const Profile = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [city, setCity] = useState('');
-    const [genre, setGenre] = useState('');
+    const [address, setaddress] = useState('');
+    const [settingcapacity, setsettingcapacity] = useState('');
+    const [openinghours, setopeninghours] = useState('');
     const [profilePhoto, setProfilePhoto] = useState('');
-    const [coverPhoto, setCoverPhoto] = useState('');
     const [biography, setBiography] = useState('');
 
 
@@ -35,17 +36,16 @@ const Profile = () => {
     const getSingleProfile = useCallback(async () => {
         setLoading(true);
 
-        const res = await MakeGet(`api/artists`, token);
+        const res = await MakeGet(`api/vanue`, token);
 
         if (res) {
             setsignleProfile(res?.data);
             setName(res?.data?.name);
             setEmail(res?.data?.email);
-            setGenre(res?.data?.genre);
+            setaddress(res?.data?.genre);
             setCity(res?.data?.city);
             setBiography(res?.data?.bio);
             setProfilePhoto(res?.data?.image_url);
-            setCoverPhoto(res?.data?.cover_photo_url);
             toast.success(res?.data?.message);
         } else {
             toast.error(res?.message);
@@ -74,7 +74,6 @@ const Profile = () => {
         const data = {
             user_id: id,
             name,
-            email,
             city,
             genre,
             image: profilePhoto,
@@ -82,15 +81,19 @@ const Profile = () => {
             bio: biography
         }
 
-        const res = await MakePut(`api/artists/${id}`, data, token);
+
+        const res = await MakePut(`api/artist/${signleProfile?.id}/profile`, data, token);
 
         console.log(res);
 
-        if (res) {
+        if (res.success) {
+
+            console.log(res);
+
             toast.success(res?.message);
             getSingleProfile();
         } else {
-            toast.error("There was server side problem");
+            toast.error(res?.message);
         }
 
 
@@ -131,10 +134,11 @@ const Profile = () => {
                     <div>
                         <label className="block mb-1">Email:</label>
                         <input
+                            disabled
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            disabled={!isEditing}
+                            disabled={true}
                             className={`border p-2 rounded-md w-full ${!isEditing ? "bg-gray-100 cursor-not-allowed" : "border-gray-200"}`}
                         />
                     </div>
@@ -151,24 +155,50 @@ const Profile = () => {
                     </div>
 
                     <div>
-                        <label className="block mb-1">Genre:</label>
+                        <label className="block mb-1">Address:</label>
+
                         <select
-                            value={genre}
-                            onChange={(e) => setGenre(e.target.value)}
+                            value={address}
+                            onChange={(e) => setaddress(e.target.value)}
                             disabled={!isEditing}
                             className={`border p-2 rounded-md w-full ${!isEditing ? "bg-gray-100 cursor-not-allowed" : "border-gray-200"}`}
                         >
-                            <option value="Rap">Rap</option>
-                            <option value="Country">Country</option>
-                            <option value="Pop">Pop</option>
-                            <option value="Rock">Rock</option>
-                            <option value="Jazz">Jazz</option>
-                            <option value="Reggae">Reggae</option>
-                            <option value="EDM">EDM</option>
-                            <option value="Classical">Classical</option>
-                            <option value="Other">Other</option>
+                            <option value="">Select Address</option>
+                            <option value="New Orleans">New Orleans</option>
+                            <option value="Biloxi">Biloxi</option>
+                            <option value="Mobile">Mobile</option>
+                            <option value="Pensacola">Pensacola</option>
                         </select>
+
                     </div>
+
+
+                    <div>
+                        <label className="block mb-1">Seating Capacity:</label>
+
+                        <input
+                            type="number"
+                            value={settingcapacity}
+                            onChange={(e) => setsettingcapacity(e.target.value)}
+                            disabled={!isEditing}
+                            className={`border p-2 rounded-md w-full ${!isEditing ? "bg-gray-100 cursor-not-allowed" : "border-gray-200"}`}
+                        />
+
+                    </div>
+
+                    <div>
+                        <label className="block mb-1">Open Hours a Day:</label>
+
+                        <input
+                            type="number"
+                            value={openinghours}
+                            onChange={(e) => setopeninghours(e.target.value)}
+                            disabled={!isEditing}
+                            className={`border p-2 rounded-md w-full ${!isEditing ? "bg-gray-100 cursor-not-allowed" : "border-gray-200"}`}
+                        />
+
+                    </div>
+
 
                     <div>
                         <label className="block mb-1">Profile Photo:</label>
@@ -182,26 +212,7 @@ const Profile = () => {
                         {
                             profilePhoto && <div>
                                 <div className="w-[150px] h-[150px] mt-5 rounded-md border border-gray-200 mb-4 overflow-hidden">
-                                    <Image src={profilePhoto} alt="Profile-Photo" width={1000} height={1000} />
-                                </div>
-                            </div>
-                        }
-                    </div>
-
-                    <div>
-                        <label className="block mb-1">Cover Photo:</label>
-                        <input
-                            type="file"
-                            onChange={(e) => handleFileChange(e, setCoverPhoto)}
-                            disabled={!isEditing}
-                            className={`border p-2 rounded-md w-full ${!isEditing ? "bg-gray-100 cursor-not-allowed" : "border-gray-200"}`}
-                        />
-
-
-                        {
-                            coverPhoto && <div>
-                                <div className="w-full h-[150px] mt-5 rounded-md border border-gray-200 overflow-hidden object-contain mb-4 overflow-hidden">
-                                    <Image src={coverPhoto} alt="Profile-Photo" width={1000} height={1000} />
+                                    <Image priority src={profilePhoto} alt="Profile-Photo" width={1000} height={1000} />
                                 </div>
                             </div>
                         }

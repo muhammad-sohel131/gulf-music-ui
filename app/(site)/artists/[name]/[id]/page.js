@@ -1,3 +1,5 @@
+'use client'
+
 import Container from "@/app/componnent/Container";
 import SongPlayer from "@/app/componnent/Songplear";
 import Image from "next/image";

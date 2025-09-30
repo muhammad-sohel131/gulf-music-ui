@@ -4,7 +4,9 @@ import { NextResponse } from "next/server";
 async function verifyJWT(token) {
     try {
         const secret = new TextEncoder().encode(process.env.NEXT_PUBLIC_JWT_SECRET);
-        const { payload } = await jwtVerify(token, secret);
+        const { payload } = await jwtVerify(token, secret, {
+            clockTolerance: 30 // allow 30 seconds difference
+        });
         return payload;
     } catch (err) {
         console.log("JWT Error:", err);
@@ -34,7 +36,17 @@ export default async function middleware(req) {
 
     // If not logged in but trying to access protected routes
     if (!decoded && isProtected) {
-        return NextResponse.redirect(new URL("/signin", req.nextUrl));
+        const res = NextResponse.redirect(new URL("/signin", req.nextUrl));
+
+        // Clear cookies correctly on the response
+        ["id", "role", "token", "name"].forEach(cookieName => {
+            res.cookies.set(cookieName, "", {
+                path: "/",
+                maxAge: 0, // delete cookie
+            });
+        });
+
+        return res;
     }
 
     // Role-based access

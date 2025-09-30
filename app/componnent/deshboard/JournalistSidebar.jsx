@@ -8,7 +8,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
-const ArtistsSidebar = () => {
+const JournalistSidebar = () => {
 
 
     const router = useRouter();
@@ -38,17 +38,14 @@ const ArtistsSidebar = () => {
     return (
         <div className={`w-full bg-black text-white h-screen sticky top-28 py-12 px-8 ${isOpen ? "flex flex-col" : "hidden lg:flex lg:flex-col"} `}>
 
-            <Link onClick={() => { setisOpen(false) }} className="text-xl w-full bg-gray-800 hover:bg-gray-900 py-2 px-3 mb-4 rounded-md" href={'/deshboard/artists/profile'}>
+            <Link onClick={() => { setisOpen(false) }} className="text-xl w-full bg-gray-800 hover:bg-gray-900 py-2 px-3 mb-4 rounded-md" href={'/deshboard/journalist/profile'}>
                 Profile
             </Link>
 
-            <Link onClick={() => { setisOpen(false) }} className="text-xl w-full bg-gray-800 hover:bg-gray-900 py-2 px-3 mb-4 rounded-md" href={'/deshboard/artists/photo'}>
-                Photo
+            <Link onClick={() => { setisOpen(false) }} className="text-xl w-full bg-gray-800 hover:bg-gray-900 py-2 px-3 mb-4 rounded-md" href={'/deshboard/journalist/news'}>
+                Add News
             </Link>
 
-            <Link onClick={() => { setisOpen(false) }} className="text-xl w-full bg-gray-800 hover:bg-gray-900 py-2 px-3 mb-4 rounded-md" href={'/deshboard/artists/song'}>
-                Song
-            </Link>
 
 
 
@@ -62,4 +59,4 @@ const ArtistsSidebar = () => {
     )
 }
 
-export default ArtistsSidebar;
+export default JournalistSidebar;

@@ -161,6 +161,7 @@ const Profile = () => {
                             disabled={!isEditing}
                             className={`border p-2 rounded-md w-full ${!isEditing ? "bg-gray-100 cursor-not-allowed" : "border-gray-200"}`}
                         >
+                            <option value="">Select Genre</option>
                             <option value="Rap">Rap</option>
                             <option value="Country">Country</option>
                             <option value="Pop">Pop</option>
