@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import mergeImage from "../../../public/postcast.jpg";
+import mergeImage from "../../../public/merch.png";
 import Container from "../Container";
 
 
@@ -50,7 +50,7 @@ const MerchSection = () => {
                         {merchItems.map((item) => (
                             <div
                                 key={item.id}
-                                className="bg-white min-w-[220px] shadow-md rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300"
+                                className="bg-gray-50 min-w-[220px] shadow-md rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300"
                             >
                                 <a href={item.link} target="_blank" rel="noopener noreferrer">
                                     <Image
@@ -58,7 +58,7 @@ const MerchSection = () => {
                                         height={1000}
                                         src={item.image}
                                         alt={item.title}
-                                        className="w-full h-48 object-cover"
+                                        className="w-full h-48 object-cover border border-gray-50"
                                     />
                                     <div className="p-4">
                                         <h3 className="text-lg font-semibold text-gray-800">
