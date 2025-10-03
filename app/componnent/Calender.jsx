@@ -6,6 +6,7 @@ import FullCalendar from "@fullcalendar/react";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import { useEffect, useRef, useState } from "react";
 import Container from "./Container";
+import EventModal from "./site/EventModal";
 
 // Dummy functions for testing
 const getCookie = () => "dummy-token";
@@ -98,7 +99,7 @@ export default function Calendar() {
                     <select
                         value={address}
                         onChange={(e) => setaddress(e.target.value)}
-                        className={`border p-2 rounded-md bg-gray-100 cursor-pointer border border-gray-300 w-[220px] focus:outline-none`}
+                        className={`border p-2 rounded-md bg-gray-100 cursor-pointer border-gray-300 w-[220px] focus:outline-none`}
                     >
                         <option value="New Orleans">New Orleans</option>
                         <option value="Biloxi">Biloxi</option>
@@ -122,6 +123,7 @@ export default function Calendar() {
                     />
                 </div>
             </Container>
+            {isOpen && <EventModal isOpen={isOpen} onClose={closeModal} />}
         </div>
     );
 }

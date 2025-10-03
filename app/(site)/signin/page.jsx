@@ -4,6 +4,7 @@ import Loading from "@/app/componnent/Loading";
 import setCookie from "@/app/utilis/helper/cookie/setcookie";
 import logingandsignupmakepost from "@/app/utilis/requestrespose/logingandsignupmakepost";
 import useLoadingStore from "@/store/useLoadingStore";
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -73,44 +74,57 @@ const Signin = () => {
 
 
     return (
-        <div className="w-screen pb-[95px] pt-[200px] flex justify-center items-center bg-gray-100">
+        <div className="md:py-[30px] py-[180px] w-full mx-auto flex justify-center items-center bg-gray-100">
             {isLoading && <Loading />}
-            <div className="bg-white p-6 rounded-lg shadow-md w-80 text-center">
-                <h2 className="text-xl font-bold mb-4">Sign IN</h2>
+            <div className="flex  max-w-[1400px] w-[90%] justify-between items-center gap-10">
+                <div className="bg-white mx-auto md:w-[40%] p-6 rounded-lg shadow-md text-center">
+                    <h2 className="text-xl font-bold mb-4">Sign IN</h2>
 
-                <form onSubmit={handleSubmit} className="space-y-4">
-                    <input
-                        type="email"
-                        placeholder="Email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md outline-none "
+                    <form onSubmit={handleSubmit} className="space-y-4">
+                        <input
+                            type="email"
+                            placeholder="Email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md outline-none "
+                        />
+
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md outline-none "
+                        />
+
+
+                        <button
+                            type="submit"
+                            className="w-full bg-yellow-400 text-black font-semibold py-2 rounded-md hover:bg-yellow-600 transition cursor-pointer"
+                        >
+                            Login
+                        </button>
+                    </form>
+
+                    <Link href="#" className="block mt-3 text-sm text-gray-600 hover:underline">
+                        Forget Password
+                    </Link>
+
+                    <span className="flex items-center gap-1 pt-2 justify-center">Did not have an account ? <Link href="signup" className="text-sm text-gray-600 hover:underlin">
+                        sign Up
+                    </Link></span>
+                </div>
+
+
+                <div className="md:w-[60%] hidden md:block">
+                    <DotLottieReact
+                        src="https://lottie.host/1fdd929b-9441-4c7c-bbf1-003b55c02091/rPVKkhwjIL.lottie"
+                        loop
+                        autoplay
+                        height={300}
+                        width={300}
                     />
-
-                    <input
-                        type="password"
-                        placeholder="Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md outline-none "
-                    />
-
-
-                    <button
-                        type="submit"
-                        className="w-full bg-yellow-400 text-black font-semibold py-2 rounded-md hover:bg-yellow-600 transition cursor-pointer"
-                    >
-                        Login
-                    </button>
-                </form>
-
-                <Link href="#" className="block mt-3 text-sm text-gray-600 hover:underline">
-                    Forget Password
-                </Link>
-
-                <span className="flex items-center gap-1 pt-2 justify-center">Did not have an account ? <Link href="signup" className="text-sm text-gray-600 hover:underline text-yellow-500">
-                    sign Up
-                </Link></span>
+                </div>
             </div>
             <ToastContainer />
         </div>

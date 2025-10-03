@@ -32,6 +32,7 @@ export default function FevArtist() {
                     </p>
 
                     <Swiper
+
                         modules={[Navigation, Pagination, Autoplay]}
                         spaceBetween={20}
                         slidesPerView={4}
@@ -61,7 +62,7 @@ export default function FevArtist() {
                         ))}
                     </Swiper>
 
-                    <button className="mt-6 px-6 py-2 text-black rounded-lg hover:bg-yellow-400 transition cursor-pointer bg-yellow-300">
+                    <button className="mt-6 px-6 py-2 text-black rounded-lg hover:bg-yellow-400 transition cursor-pointer bg-[#FDF072]">
                         Read more
                     </button>
                 </div>

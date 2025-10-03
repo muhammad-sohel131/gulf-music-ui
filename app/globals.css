@@ -36,7 +36,19 @@ body {
   color: #171717 !important;
 }
 
+.swiper-button-next,
+.swiper-button-prev {
+  color: #FDF070;
+}
 
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  color: #FDF070;
+}
+
+.swiper-pagination-bullet-active {
+  background: #FDF070;
+}
 
 
 .hhhhh::after {

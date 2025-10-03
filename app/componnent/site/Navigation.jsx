@@ -51,7 +51,7 @@ const Navigation = ({ isnavOpen, setisnavOpen }) => {
         <nav className={`flex flex-col md:flex-row bg-black md:bg-transparent fixed top-0 left-0 md:static w-screen h-screen md:fit md:h-fit space-x-8 md:justify-center pt-20 md:pt-0 pl-4 md:pl-0 gap-4 md:gap-3 z-30 ${isnavOpen ? "flex flex-col md:flex-row" : "hidden md:flex md:flex-row"}`}>
             {navItems.map((item, index) => (
                 item.title === "Home" ? (
-                    <Link className="hover:text-gray-300 text-xl text-yellow-50 cursor-pointer" key={index} href="/">{item.title}</Link>
+                    <Link className="hover:text-gray-300 active:text-amber-300 hover:border-b hover:border-amber-300 text-xl text-yellow-50 cursor-pointer" key={index} href="/">{item.title}</Link>
                 ) : (
                     <div
                         key={index}
@@ -59,7 +59,7 @@ const Navigation = ({ isnavOpen, setisnavOpen }) => {
                         onMouseEnter={() => setOpenMenu(index)}
                         onMouseLeave={() => setOpenMenu(null)}
                     >
-                        <button className="hover:text-gray-300 text-xl text-yellow-50 cursor-pointer">{item.title}</button>
+                        <button className="hover:text-gray-300 hover:border-b hover:border-amber-300 text-xl text-yellow-50 cursor-pointer">{item.title}</button>
 
                         {/* Dropdown */}
                         {openMenu === index && (

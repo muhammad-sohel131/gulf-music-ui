@@ -15,19 +15,19 @@ export default function HeroAfter() {
                         <Image
                             src={heroAfterImage} // Replace with your image path
                             alt="Gulf Coast Music"
-                            width={600}
-                            height={400}
-                            className="rounded-2xl shadow-lg object-cover w-full h-auto"
+                            // width={600}
+                            // height={400}
+                            className="rounded-2xl shadow-lg object-cover w-[400px] mx-auto h-[500px]"
                         />
                         {/* Streaming Badge */}
-                        <div className="absolute bottom-6 left-6 bg-white shadow-lg rounded-xl px-4 py-2 text-center">
-                            <h3 className="text-xl font-bold">259+</h3>
-                            <p className="text-gray-500 text-sm">Streaming</p>
+                        <div className="absolute bottom-6 left-0 bg-white shadow-lg rounded-xl px-12 py-5 text-center">
+                            <h3 className="text-5xl font-bold">259+</h3>
+                            <p className="text-black text-sm">Streaming</p>
                         </div>
                         {/* Hits Badge */}
-                        <div className="absolute top-6 right-6 bg-white shadow-lg rounded-xl px-4 py-2 text-center">
-                            <h3 className="text-xl font-bold">100+</h3>
-                            <p className="text-gray-500 text-sm">Hits</p>
+                        <div className="absolute top-6 right-0 bg-white shadow-lg rounded-xl px-12 py-5 text-center">
+                            <h3 className="text-5xl font-bold">100+</h3>
+                            <p className="text-black text-sm">Hits</p>
                         </div>
                     </div>
 
