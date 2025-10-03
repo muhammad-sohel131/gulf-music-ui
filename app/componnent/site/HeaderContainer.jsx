@@ -1,7 +1,7 @@
 
 const HeaderContainer = ({ children }) => {
     return (
-        <div className="py-0 px-6 md:px-16 lg:px-20">
+        <div className="py-0 px-[20px] max-w-[1400px] mx-auto">
             {children}
         </div>
     )

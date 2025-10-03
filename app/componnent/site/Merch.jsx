@@ -54,11 +54,11 @@ const MerchSection = () => {
                             >
                                 <a href={item.link} target="_blank" rel="noopener noreferrer">
                                     <Image
-                                        width={1000}
-                                        height={1000}
+                                        // width={1000}
+                                        // height={1000}
                                         src={item.image}
                                         alt={item.title}
-                                        className="w-full h-48 object-cover border border-gray-50"
+                                        className="object-container border border-gray-50"
                                     />
                                     <div className="p-4">
                                         <h3 className="text-lg font-semibold text-gray-800">

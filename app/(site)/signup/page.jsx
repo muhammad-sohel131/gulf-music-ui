@@ -2,6 +2,7 @@
 
 import Loading from "@/app/componnent/Loading";
 import logingandsignupmakepost from "@/app/utilis/requestrespose/logingandsignupmakepost";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -45,59 +46,70 @@ const SignUP = () => {
 
 
     return (
-        <div className="w-screen pb-[95px] pt-[200px] flex justify-center items-center bg-gray-100">
+        <div className="w-screen pb-[30px] md:pt-[30px] pt-[180px] flex justify-center items-center bg-gray-100 px-[20px]">
             {isLoading && <Loading />}
-            <div className="bg-white p-6 rounded-lg shadow-md w-80 text-center">
-                <h2 className="text-xl font-bold mb-4">Sign Up</h2>
-
-                <form onSubmit={handleSubmit} className="space-y-4">
-                    <input
-                        type="text"
-                        placeholder="Name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md outline-none "
+            <div className="flex max-w-[1400px] mx-auto justify-between items-center">
+                <div className="md:w-[60%] hidden md:block">
+                    <DotLottieReact
+                        src="https://lottie.host/1fdd929b-9441-4c7c-bbf1-003b55c02091/rPVKkhwjIL.lottie"
+                        loop
+                        autoplay
+                        height={300}
+                        width={300}
                     />
-                    <input
-                        type="email"
-                        placeholder="Email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md outline-none "
-                    />
+                </div>
+                <div className="bg-white p-6 rounded-lg shadow-md md:w-[40%] w-[90%] mx-auto text-center">
+                    <h2 className="text-xl font-bold mb-4">Sign Up</h2>
 
-                    <input
-                        type="password"
-                        placeholder="Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md outline-none "
-                    />
+                    <form onSubmit={handleSubmit} className="space-y-4">
+                        <input
+                            type="text"
+                            placeholder="Name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md outline-none "
+                        />
+                        <input
+                            type="email"
+                            placeholder="Email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md outline-none "
+                        />
+
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md outline-none "
+                        />
 
 
-                    <select
-                        value={role}
-                        placeholder="Select Option"
-                        onChange={(e) => setrole(e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md outline-none"
-                    >
-                        <option value="Artist">Artist</option>
-                        <option value="Venue">Venue</option>
-                        <option value="Journalist">Journalist</option>
-                        <option value="Fan">Fan</option>
-                    </select>
+                        <select
+                            value={role}
+                            placeholder="Select Option"
+                            onChange={(e) => setrole(e.target.value)}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md outline-none"
+                        >
+                            <option value="Artist">Artist</option>
+                            <option value="Venue">Venue</option>
+                            <option value="Journalist">Journalist</option>
+                            <option value="Fan">Fan</option>
+                        </select>
 
-                    <button
-                        type="submit"
-                        className="w-full bg-yellow-400 text-black font-semibold py-2 rounded-md hover:bg-yellow-600 transition cursor-pointer"
-                    >
-                        Sign Up
-                    </button>
-                </form>
+                        <button
+                            type="submit"
+                            className="w-full bg-yellow-400 text-black font-semibold py-2 rounded-md hover:bg-yellow-600 transition cursor-pointer"
+                        >
+                            Sign Up
+                        </button>
+                    </form>
 
-                <span className="flex items-center gap-1 pt-2 justify-center">Already have an Account ? <Link href="signin" className="text-sm text-gray-600 hover:underline text-yellow-500">
-                    sign In
-                </Link></span>
+                    <span className="flex items-center gap-1 pt-2 justify-center">Already have an Account ? <Link href="signin" className="text-sm text-gray-600 hover:underline">
+                        sign In
+                    </Link></span>
+                </div>
             </div>
         </div>
     );
